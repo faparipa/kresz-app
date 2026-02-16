@@ -95,6 +95,18 @@ export default function SegedletekPage() {
           <li>Személyi sérülés → 6 pont</li>
         </ul>
       </InfoCard>
+      <InfoCard title='Készítette:'>
+        <div className='space-y-2 text-xs text-gray-600 leading-relaxed'>
+          <p>
+            Imregh István r. alezredes Borsod - A - Z. VMRFK munkája alapján
+          </p>
+          <p> Farsang Gábor, E-mail: farsangg@zala.police.hu</p>
+          <p>A jogszabályokat nem szó szerint emeltem át.</p>
+          <p className='text-orange-950  text-sm font-semibold'>
+            Teszteld és ha hibát találsz,vagy javaslatod van értesíts
+          </p>
+        </div>
+      </InfoCard>
     </main>
   );
 }

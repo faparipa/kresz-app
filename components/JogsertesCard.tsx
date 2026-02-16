@@ -33,13 +33,13 @@ export function JogsertesCard({
 
       <div className='mb-2 flex flex-wrap gap-2'>
         {item.HB !== null && (
-          <span className='rounded bg-green-100 px-4 py-7 text-xl font-bold text-green-800'>
+          <span className='rounded bg-green-100 px-4 py-2 text-xl font-bold text-green-800 flex items-center justify-center'>
             HB
           </span>
         )}
 
         {item.KOZIG !== null && (
-          <span className='rounded bg-blue-100 px-2 py-7 text-xl font-bold text-blue-800'>
+          <span className='rounded bg-blue-100 px-2 py-2 text-xl font-bold text-blue-800 flex items-center justify-center'>
             Közig. bírság
           </span>
         )}

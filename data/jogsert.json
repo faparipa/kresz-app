@@ -57,6 +57,20 @@
   },
   {
     "Id": 5,
+    "Tv": "326/2011. (XII.28.) Korm. r.",
+    "paragrafus": 5,
+    "bekezdes": 5,
+    "pont": "",
+    "csoport": "vezetői engedély",
+    "Jogsertes": "vez. eng. orvosi érvényessége lejárt  (ütköztetés és minősítés a bírósági gyakorlat függvényében)",
+    "HB": "6,5",
+    "KOZIG_objektiv_felelosseg": null,
+    "KOZIG": null,
+    "kke_pont": null,
+    "minosites": "2012 évi II. tv:  225 §"
+  },
+  {
+    "Id": 6,
     "Tv": "KRESZ",
     "paragrafus": 4,
     "bekezdes": 1,
@@ -69,20 +83,7 @@
     "kke_pont": null,
     "minosites": "2012 évi II. tv:  224 § "
   },
-  {
-    "Id": 6,
-    "Tv": "KRESZ",
-    "paragrafus": 4,
-    "bekezdes": 1,
-    "pont": "a",
-    "csoport": "vezetői engedély",
-    "Jogsertes": "állati erővel vont jármű eng. nélküli vezetése",
-    "HB": "6,5",
-    "KOZIG_objektiv_felelosseg": null,
-    "KOZIG": null,
-    "kke_pont": null,
-    "minosites": "2012 évi II. tv:  224 §"
-  },
+
   {
     "Id": 7,
     "Tv": "KRESZ",
@@ -152,6 +153,20 @@
     "KOZIG": null,
     "kke_pont": null,
     "minosites": "2012 évi II. tv:  176 § 2) "
+  },
+  {
+    "Id": 19,
+    "Tv": "KRESZ",
+    "paragrafus": 4,
+    "bekezdes": 1,
+    "pont": "a",
+    "csoport": "vezetői engedély",
+    "Jogsertes": "állati erővel vont jármű eng. nélküli vezetése",
+    "HB": "6,5",
+    "KOZIG_objektiv_felelosseg": null,
+    "KOZIG": null,
+    "kke_pont": null,
+    "minosites": "2012 évi II. tv:  224 §"
   },
   {
     "Id": 12,
@@ -238,20 +253,6 @@
     "minosites": "Kkt 20. § "
   },
 
-  {
-    "Id": 19,
-    "Tv": "326/2011. (XII.28.) Korm. r.",
-    "paragrafus": 5,
-    "bekezdes": 5,
-    "pont": "",
-    "csoport": "vezetői engedély",
-    "Jogsertes": "vez. eng. orvosi érvényessége lejárt  (ütköztetés és minősítés a bírósági gyakorlat függvényében)",
-    "HB": "6,5",
-    "KOZIG_objektiv_felelosseg": null,
-    "KOZIG": null,
-    "kke_pont": null,
-    "minosites": "2012 évi II. tv:  225 §"
-  },
   {
     "Id": 20,
     "Tv": "KRESZ",
@@ -1550,7 +1551,7 @@
     "bekezdes": 2,
     "pont": "",
     "csoport": "Autópálya",
-    "Jogsertes": "Megfordulás, hátramenet (tolatás) szabályainak megszegése autópálya úttestjén és leállósávján autóúton és vasúti átjáróban",
+    "Jogsertes": "Megfordulás, hátramenet (tolatás) szabályainak megszegése autópályán, autóúton és vasúti átjáróban",
     "HB": "26",
     "KOZIG_objektiv_felelosseg": null,
     "KOZIG": null,
