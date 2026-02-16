@@ -103,7 +103,7 @@ export default function SegedletekPage() {
           <p> Farsang Gábor, E-mail: farsangg@zala.police.hu</p>
           <p>A jogszabályokat nem szó szerint emeltem át.</p>
           <p className='text-orange-950  text-sm font-semibold'>
-            Teszteld és ha hibát találsz,vagy javaslatod van értesíts
+            Teszteld és ha hibát találsz, vagy javaslatod van értesíts
           </p>
         </div>
       </InfoCard>

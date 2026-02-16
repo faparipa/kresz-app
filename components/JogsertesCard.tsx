@@ -31,7 +31,7 @@ export function JogsertesCard({
       <h3 className='mb-1 font-semibold text-amber-950'>{item.csoport}</h3>
       <h3 className='mb-1 font-semibold text-amber-950'>{item.Jogsertes}</h3>
 
-      <div className='mb-2 flex flex-wrap gap-2'>
+      <div className='mb-5 flex flex-wrap gap-2'>
         {item.HB !== null && (
           <span className='rounded bg-green-100 px-4 py-2 text-xl font-bold text-green-800 flex items-center justify-center'>
             HB
@@ -80,20 +80,19 @@ export function JogsertesCard({
               Minősül: {item.minosites}
             </p>
           )}
-
-          {/* Kedvenc */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggleFavorite();
-            }}
-            className='absolute right-3 bottom-3 text-xl cursor-pointer hover:text-shadow-gray-950'
-            aria-label='Kedvenc'
-          >
-            {isFavorite ? '❤️' : '🤍'}
-          </button>
         </div>
       </div>
+      {/* Kedvenc */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onToggleFavorite();
+        }}
+        className='absolute left-5 bottom-1 mt-2 text-xl cursor-pointer hover:text-shadow-gray-950'
+        aria-label='Kedvenc'
+      >
+        {isFavorite ? '❤️' : '🤍'}
+      </button>
     </div>
   );
 }
