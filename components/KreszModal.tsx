@@ -34,7 +34,7 @@ export default function KreszModal({
             onClick={onClose}
             className='text-3xl font-bold text-gray-500 hover:text-black'
           >
-            ×
+            X
           </button>
         </div>
 
