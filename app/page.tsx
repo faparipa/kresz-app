@@ -1,13 +1,17 @@
 import JogsertesLista from '@/components/JogsertesLista';
-import jogsertesek from '../data/jogsertesek.json';
+import raw from '../data/jogsert.json';
+import { Jogsert } from '@/types/jogsertes';
 
+const jogsertesek = raw as Jogsert[];
 export default function Home() {
   return (
-    <main className='min-h-screen bg-gray-100 p-6'>
-      <h1 className='text-2xl font-bold text-amber-700'>KRESZ Jogtár</h1>
+    <main className='min-h-screen bg-gray-300 p-6 flex flex-col items-center '>
+      <h1 className='text-xl font-bold text-amber-700 text-center '>
+        A leggyakrabban szankcionát szabálysértések
+      </h1>
 
-      <p className='mt-2 text-gray-700'>
-        Offline használható közlekedési jogsértés-kereső
+      <p className='mt-2 text-gray-700 text-center'>
+        Offline is használható jogsértés-kereső
       </p>
       <JogsertesLista data={jogsertesek} />
     </main>

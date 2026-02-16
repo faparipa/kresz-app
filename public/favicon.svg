@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#FFC107"/> <!-- háttér szín, pl. sárga-amber -->
+  <text x="50%" y="50%" font-size="40" text-anchor="middle" dominant-baseline="middle" fill="#000000" font-family="Arial, sans-serif">§</text>
+</svg>

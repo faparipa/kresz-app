@@ -1,4 +1,4 @@
-import { KreszKivonat } from '../types/kresz.js';
+import { Jogszabaly, KreszKivonat, TorvenyItem } from '../types/kresz.js';
 
 export const kreszKivonatok: KreszKivonat = {
   /** =========================
@@ -95,24 +95,7 @@ export const kreszKivonatok: KreszKivonat = {
       '1': {
         id: '4_1',
         szoveg:
-          'Járművet az a személy vezethet, aki az alábbi feltételeknek megfelel:',
-        alpontok: {
-          a: {
-            id: '4_1_a',
-            szoveg:
-              'Érvényes, jogszabályban előírt vezetői engedéllyel vagy bejegyzett vezetési jogosultsággal rendelkezik.',
-          },
-          b: {
-            id: '4_1_b',
-            szoveg:
-              'A jármű biztonságos vezetésére alkalmas fizikai és szellemi állapotban van.',
-          },
-          c: {
-            id: '4_1_c',
-            szoveg:
-              'Nem áll a vezetési képességet hátrányosan befolyásoló szer hatása alatt, és szervezetében nincs szeszes ital fogyasztásából származó alkohol.',
-          },
-        },
+          'Járművet az vezethet, aki \n a) a jármű vezetésére jogszabályban meghatározott, érvényes vezetői engedéllyel vagy az engedély-nyilvántartásba bejegyzett érvényes vezetési jogosultsággal rendelkezik, \n b) a jármű biztonságos vezetésére képes állapotban van, továbbá \n c) a vezetési képességre hátrányosan ható szer befolyása alatt nem áll, és szervezetében nincs szeszes ital fogyasztásából származó alkohol.',
       },
 
       '2': {
@@ -170,6 +153,11 @@ export const kreszKivonatok: KreszKivonat = {
           e: {
             id: '5_1_e',
             szoveg:
+              'amely megfelel a (9) bekezdésben meghatározott feltételnek;(A magyar hatósági jelzéssel ellátott gépjárművön nem lehet olyan jelzéstn – ide nem értve a DT és a CK betűjelű rendszámtáblával közlekedő gépjárművet  – így különösen CD jelzésű matrica amely diplomáciai képviseletre utal',
+          },
+          f: {
+            id: '5_1_f',
+            szoveg:
               'Rendelkezik a jogszabályban előírt kötelező gépjármű-felelősségbiztosítással.',
           },
         },
@@ -216,12 +204,13 @@ export const kreszKivonatok: KreszKivonat = {
         alpontok: {
           a: {
             id: '6_1_a',
-            szoveg: 'Ha a rendőr mindkét karját oldalirányban kinyújtja:',
+            szoveg:
+              'Ha a rendőr mindkét karját oldalirányban kinyújtja: \n aa) A kinyújtott karral párhuzamos irányból érkező járművek és gyalogosok számára szabad az áthaladás. A gyalogos átkelhet az úttesten, a jármű pedig – ha azt jelzőtábla nem tiltja – egyenesen továbbhaladhat, valamint jobbra vagy balra bekanyarodhat. \n ab) A kinyújtott karra merőleges irányból érkezők számára tilos a továbbhaladás. A gyalogos nem léphet az úttestre, a járművel pedig a kijelölt gyalogos-átkelőhely előtt, ennek hiányában a megállás helyét jelző útburkolati jel előtt, ezek hiányában az útkereszteződés előtt meg kell állni....',
             alpontok: {
               aa: {
                 id: '6_1_a_aa',
                 szoveg:
-                  'A kinyújtott karral párhuzamos irányból érkező járművek és gyalogosok számára szabad az áthaladás. A gyalogos átkelhet az úttesten, a jármű pedig – ha azt jelzőtábla nem tiltja – egyenesen továbbhaladhat, valamint jobbra vagy balra bekanyarodhat.',
+                  'A kinyújtott karral párhuzamos irányból érkező járművek és gyalogosok számára szabad az áthaladás. A gyalogos átkelhet az úttesten, a jármű pedig – ha azt jelzőtábla nem tiltja – egyenesen továbbhaladhat, valamint jobbra vagy balra bekanyarodhat. ab) A kinyújtott karra merőleges irányból érkezők számára tilos a továbbhaladás. A gyalogos nem léphet az úttestre, a járművel pedig a kijelölt gyalogos-átkelőhely előtt, ennek hiányában a megállás helyét jelző útburkolati jel előtt, ezek hiányában az útkereszteződés előtt meg kell állni.',
               },
               ab: {
                 id: '6_1_a_ab',
@@ -836,8 +825,8 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               '„Kötelező haladási irány” jelzőtábla azt jelzi, hogy az útkereszteződésben kizárólag a táblán feltüntetett nyíl vagy nyilak irányába szabad továbbhaladni. Ha a tábla alatt autóbuszt vagy kerékpárt ábrázoló kiegészítő tábla van, akkor a menetrend szerint közlekedő autóbusz, illetve a kerékpáros a kiegészítő táblán jelzett irányban haladhat tovább.',
           },
-          a1: {
-            id: '13_1_a1',
+          'a/1': {
+            id: '13_1_a/1',
             szoveg:
               '„Kötelező haladási irány veszélyes anyagot szállító jármű részére” jelzőtábla azt jelenti, hogy az útkereszteződésben a veszélyes anyagot szállító jármű kizárólag a táblán megjelölt irányban haladhat tovább.',
           },
@@ -886,23 +875,23 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               '„Gyalog- és kerékpárút vége” jelzőtábla a közös gyalogos-kerékpáros út végét jelzi.',
           },
-          g1: {
-            id: '13_1_g1',
+          'g/1': {
+            id: '13_1_g/1',
             szoveg:
               '„Gyalogos övezet (zóna)” jelzőtábla olyan terület kezdetét jelzi, ahol az utak elsősorban a gyalogosok közlekedésére szolgálnak. A járműforgalom alapvetően tilos. Ha időszakot jelölő kiegészítő tábla van elhelyezve, az azon kívüli időben az ott lakók, az engedéllyel rendelkezők és a kerékpárosok legfeljebb 10 km/óra sebességgel, a gyalogosok veszélyeztetése nélkül közlekedhetnek. A jelzett időszakban a várakozás tilos. Mozgáskorlátozott személyt szállító jármű közlekedhet és várakozhat.',
           },
-          h1: {
-            id: '13_1_h1',
+          'h/1': {
+            id: '13_1_h/1',
             szoveg:
               '„Gyalogos övezet (zóna) vége” jelzőtábla a gyalogos övezet hatályának végét jelzi.',
           },
-          i1: {
-            id: '13_1_i1',
+          'i/1': {
+            id: '13_1_i/1',
             szoveg:
               '„Gyalogos és kerékpáros övezet (zóna)” jelzőtábla olyan területet jelöl, ahol az utak a gyalogosok és a kerékpárosok közlekedésére szolgálnak. Más jármű nem közlekedhet. A kerékpárosok a kijelölt útrészen legfeljebb 20 km/óra, más útrészen legfeljebb 10 km/óra sebességgel haladhatnak, a gyalogosok veszélyeztetése nélkül.',
           },
-          j1: {
-            id: '13_1_j1',
+          'j/1': {
+            id: '13_1_j/1',
             szoveg:
               '„Gyalogos és kerékpáros övezet (zóna) vége” jelzőtábla az övezet hatályának végét jelzi.',
           },
@@ -911,13 +900,13 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               '„Hólánc használata kötelező” jelzőtábla azt jelzi, hogy a jármű legalább egy hajtott tengelyén a gumiabroncsokat hólánccal kell felszerelni.',
           },
-          k1: {
-            id: '13_1_k1',
+          'k/1': {
+            id: '13_1_k/1',
             szoveg:
               '„Hólánc használata kötelező vége” jelzőtábla a hólánc használatára vonatkozó kötelezettség végét jelzi.',
           },
-          k2: {
-            id: '13_1_k2',
+          'k/2': {
+            id: '13_1_k/2',
             szoveg:
               'Ha a „Hólánc használata kötelező” jelzőtáblát közúti határátkelőhelyen helyezték el, Magyarország területére csak olyan jármű léphet be, amelynél készenlétben van legalább egy hajtott tengely gumiabroncsaira felszerelhető hólánc.',
           },
@@ -982,7 +971,7 @@ export const kreszKivonatok: KreszKivonat = {
           h: {
             id: '14_1_h',
             szoveg:
-              '„Kötelező megállás” jelzőtábla azt jelzi, hogy a megjelölt helyen megállás nélkül továbbhaladni tilos.',
+              '„Kötelező megállás”  (VÁM/ZOLL) jelzőtábla azt jelzi, hogy a megjelölt helyen megállás nélkül továbbhaladni tilos.',
           },
           i: {
             id: '14_1_i',
@@ -1017,20 +1006,71 @@ export const kreszKivonatok: KreszKivonat = {
           o: {
             id: '14_1_o',
             szoveg:
-              'A különböző „Behajtani tilos” jelzőtáblák meghatározott járműtípusok – például gépjármű, tehergépkocsi, motorkerékpár, kerékpár, mezőgazdasági vontató vagy veszélyes anyagot szállító jármű – behajtását tiltják.',
+              'Gépjárművel, mezőgazdasági vontatóval és lassú járművel behajtani tilos” (41. ábra); a tábla azt jelzi, hogy az útra gépjárművel – kivéve a kétkerekű motorkerékpárt –, valamint mezőgazdasági vontatóval és lassú járművel behajtani tilos;',
           },
-          z1: {
-            id: '14_1_z1',
+          p: {
+            id: '14_1_p',
+            szoveg:
+              '„Motorkerékpárral behajtani tilos” (42. ábra); a tábla azt jelzi, hogy az útra kétkerekű motorkerékpárral, oldalkocsis motorkerékpárral és motoros triciklivel behajtani tilos;',
+          },
+          q: {
+            id: '14_1_q',
+            szoveg:
+              '„Autóbusszal behajtani tilos” (42/a ábra); a tábla azt jelzi, hogy az útra autóbusszal – kivéve a menetrend szerint közlekedő autóbuszt – behajtani tilos;',
+          },
+          r: {
+            id: '14_1_r',
+            szoveg:
+              '„„Tehergépkocsival behajtani tilos” (43. ábra); a tábla azt jelzi, hogy az útra tehergépkocsival – kivéve a legfeljebb 3500 kilogramm megengedett legnagyobb össztömegű, zárt kocsiszekrényű tehergépkocsit –, valamint vontatóval, mezőgazdasági vontatóval és lassú járművel behajtani tilos; ha a tábla súlyhatárt is megjelöl (44. ábra), csak az ezt meghaladó megengedett legnagyobb össztömegű járművel tilos behajtani;',
+          },
+          s: {
+            id: '14_1_s',
+            szoveg:
+              '„Mezőgazdasági vontatóval behajtani tilos” (45. ábra); a tábla azt jelzi, hogy az útra mezőgazdasági vontatóval és lassú járművel behajtani tilos;',
+          },
+          t: {
+            id: '14_1_t',
+            szoveg:
+              '„Járműszerelvénnyel behajtani tilos” (46. ábra); a tábla azt jelzi, hogy az útra járműszerelvénnyel – kivéve a vonójárműből és egytengelyes vagy félpótkocsiból álló járműszerelvényt – behajtani tilos; ha a tábla súlyhatárt is megjelöl (47 . ábra), csak olyan járműszerelvénnyel tilos behajtani, amelyben a pótkocsi (bármelyik pótkocsi) megengedett legnagyobb össztömege ezt a súlyhatárt meghaladja;',
+          },
+          u: {
+            id: '14_1_u',
+            szoveg: '„Segédmotoros kerékpárral behajtani tilos” ',
+          },
+          v: {
+            id: '14_1_v',
+            szoveg: '„Kerékpárral behajtani tilos” ',
+          },
+          w: {
+            id: '14_1_w',
+            szoveg: '„Kézikocsival bemenni tilos” ',
+          },
+          x: {
+            id: '14_1_x',
+            szoveg: '„Állati erővel vont járművel behajtani tilos” ',
+          },
+          y: {
+            id: '14_1_y',
+            szoveg:
+              ',,Veszélyes anyagot szállító járművel behajtani tilos (52. ábra), a tábla azt jelzi, hogy az útra veszélyes anyagot szállító járművel behajtani tilos; ',
+          },
+          z: {
+            id: '14_1_z',
+            szoveg: '„Állati erővel vont járművel behajtani tilos” ',
+          },
+
+          'z/1': {
+            id: '14_1_z/1',
             szoveg:
               '„Korlátozott sebességű övezet” jelzőtábla olyan terület kezdetét jelzi, ahol a teljes övezetben a megjelölt sebességnél gyorsabban haladni tilos.',
           },
-          z2: {
-            id: '14_1_z2',
+          'z/2': {
+            id: '14_1_z/2',
             szoveg:
               '„Korlátozott forgalmú övezet” jelzőtábla olyan területet jelöl, ahol meghatározott járművek közlekedése tilos.',
           },
-          z3: {
-            id: '14_1_z3',
+          'z/3': {
+            id: '14_1_z/3',
             szoveg:
               '„Környezetvédelmi övezet” jelzőtábla olyan területet jelöl, ahol csak meghatározott környezetvédelmi besorolású járművek közlekedhetnek.',
           },
@@ -1350,33 +1390,33 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               '„Egyéb veszély” jelzőtábla olyan veszélyre figyelmeztet, amely más jelzőtáblával nem jelezhető. A veszély jellege kiegészítő táblán van feltüntetve.',
           },
-          z1: {
-            id: '16_1_z1',
+          'z/1': {
+            id: '16_1_z/1',
             szoveg:
               '„Gyalogosok” jelzőtábla fokozott gyalogosforgalomra figyelmeztet.',
           },
-          z2: {
-            id: '16_1_z2',
+          'z/2': {
+            id: '16_1_z/2',
             szoveg:
               '„Kerékpárosok” jelzőtábla fokozott kerékpárosforgalomra figyelmeztet.',
           },
-          z3: {
-            id: '16_1_z3',
+          'z/3': {
+            id: '16_1_z/3',
             szoveg:
               'Kiegészítő tábla jelezheti, hogy az úton olyan kereszteződés van, ahol kerékpárosok keresztirányú közlekedésére kell számítani.',
           },
-          z4: {
-            id: '16_1_z4',
+          'z/4': {
+            id: '16_1_z/4',
             szoveg:
               '„Útzár” jelzőtábla azt jelzi, hogy az utat hatósági intézkedéssel lezárták.',
           },
-          z5: {
-            id: '16_1_z5',
+          'z/5': {
+            id: '16_1_z/5',
             szoveg:
               '„Körforgalom” jelzőtábla a következő kereszteződésben körforgalmi rendet jelez.',
           },
           z6: {
-            id: '16_1_z6',
+            id: '16_1_z/6',
             szoveg:
               '„Torlódás” jelzőtábla arra figyelmeztet, hogy az úton feltorlódott járművekre kell számítani.',
           },
@@ -1438,18 +1478,18 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               '„Kijelölt gyalogosátkelőhely” jelzőtábla azt jelzi, hogy az úttesten útburkolati jellel kijelölt gyalogosátkelőhely található.',
           },
-          a1: {
-            id: '17_1_a1',
+          'a/1': {
+            id: '17_1_a/1',
             szoveg:
               '„Gyalogos alul- vagy felüljáró” jelzőtábla a gyalogosok számára kialakított aluljárót vagy felüljárót jelzi.',
           },
-          a2: {
-            id: '17_1_a2',
+          'a/2': {
+            id: '17_1_a/2',
             szoveg:
               '„Alagút” jelzőtábla alagúton való áthaladást jelez, a táblán feltüntetett felirat az alagút hosszát jelzi.',
           },
-          a3: {
-            id: '17_1_a3',
+          'a/3': {
+            id: '17_1_a/3',
             szoveg: '„Alagút vége” jelzőtábla az alagút kijáratát jelzi.',
           },
           b: {
@@ -1462,8 +1502,8 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               '„Zsákutca” jelzőtábla olyan utat jelez, amelyen áthaladó forgalom nincs.',
           },
-          c1: {
-            id: '17_1_c1',
+          'c/1': {
+            id: '17_1_c/1',
             szoveg:
               '„Zsákutca kerékpáros továbbhaladási lehetőséggel” jelzőtábla azt jelzi, hogy a zsákutcán kerékpárral tovább lehet haladni.',
           },
@@ -1472,13 +1512,13 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               '„Autóbusz-, trolibusz- vagy villamosmegállóhely” jelzőtábla menetrend szerinti járatok megállóhelyét jelzi.',
           },
-          d1: {
-            id: '17_1_d1',
+          'd/1': {
+            id: '17_1_d/1',
             szoveg:
               '„Taxiállomás” jelzőtábla a személytaxik számára kijelölt várakozóhelyet jelzi.',
           },
-          d2: {
-            id: '17_1_d2',
+          'd/2': {
+            id: '17_1_d/2',
             szoveg:
               '„Magánút” jelzőtábla azt jelzi, hogy az út nem nyilvános közforgalmú.',
           },
@@ -1487,13 +1527,13 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               '„Várakozóhely” jelzőtábla a járművek számára kijelölt várakozóhelyet jelzi, szükség esetén a várakozás módjának vagy jogosult járművek körének meghatározásával.',
           },
-          e1: {
-            id: '17_1_e1',
+          'e/1': {
+            id: '17_1_e/1',
             szoveg:
               '„Várakozóhely nehéz tehergépkocsik részére” jelzőtábla a közlekedési korlátozás alá eső tehergépkocsik számára kijelölt várakozóhelyet jelzi.',
           },
-          e2: {
-            id: '17_1_e2',
+          'e/2': {
+            id: '17_1_e/2',
             szoveg:
               '„Várakozási övezet (zóna)” jelzőtábla olyan területet jelez, ahol a várakozás feltételekhez kötött.',
           },
@@ -1502,8 +1542,8 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               '„Besorolás rendjét jelző tábla” azt mutatja meg, hogy az útkereszteződés előtt melyik forgalmi sávba kell besorolni.',
           },
-          f1: {
-            id: '17_1_f1',
+          'f/1': {
+            id: '17_1_f/1',
             szoveg:
               '„Kerékpáros közvetett kapcsolat” jelzőtábla a balra kanyarodó kerékpárosok közlekedési módját jelzi.',
           },
@@ -1512,38 +1552,38 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               '„Autóbusz forgalmi sáv” jelzőtábla az autóbuszok számára kijelölt forgalmi sáv kezdetét jelzi.',
           },
-          g1: {
-            id: '17_1_g1',
+          'g/1': {
+            id: '17_1_g/1',
             szoveg:
               '„Kerékpársáv” jelzőtábla a kerékpárosok számára kijelölt sávot jelzi.',
           },
-          g2: {
-            id: '17_1_g2',
+          'g/2': {
+            id: '17_1_g/2',
             szoveg:
               '„Kerékpársáv vége” jelzőtábla a kijelölt kerékpársáv végét jelzi.',
           },
-          g3: {
-            id: '17_1_g3',
+          'g/3': {
+            id: '17_1_g/3',
             szoveg:
               '„Kerékpárosok által is használható autóbusz forgalmi sáv” jelzőtábla a közös használatot engedélyezi.',
           },
-          g4: {
-            id: '17_1_g4',
+          'g/4': {
+            id: '17_1_g/4',
             szoveg:
               '„Út melletti kerékpárút” jelzőtábla az úttal párhuzamosan vezetett kerékpárutat jelzi.',
           },
-          g5: {
-            id: '17_1_g5',
+          'g/5': {
+            id: '17_1_g/5',
             szoveg:
               '„Út melletti kerékpárút vége” jelzőtábla a kerékpárút végét jelzi.',
           },
-          g6: {
-            id: '17_1_g6',
+          'g/6': {
+            id: '17_1_g/6',
             szoveg:
               '„Nyitott kerékpársáv” jelzőtábla egyirányú kerékpársávot jelez az úttesten.',
           },
-          g7: {
-            id: '17_1_g7',
+          'g/7': {
+            id: '17_1_g/7',
             szoveg:
               '„Nyitott kerékpársáv vége” jelzőtábla a nyitott kerékpársáv végét jelzi.',
           },
@@ -1982,13 +2022,13 @@ export const kreszKivonatok: KreszKivonat = {
   /** ======================================================
    *  20/A. § – Egyes közúti jelzésekre vonatkozó külön rendelkezések
    *  ====================================================== */
-  '20A': {
+  '20/A': {
     paragrafus: '20/A',
     cim: '20/A. § – Egyes közúti jelzésekre vonatkozó külön rendelkezések',
 
     bekezdesek: {
       '1': {
-        id: '20A_1',
+        id: '20/A_1',
         szoveg:
           'A közúti jelzések ábráin szereplő feliratok, számértékek, továbbhaladási irányt jelző nyilak, valamint az útkereszteződések, útszűkületek és egyéb területek alaprajzi vázlatai szemléltető jellegűek. Ezek a jelzések minden esetben az adott helyen ténylegesen fennálló közlekedési helyzetet és szabályozást mutatják.',
       },
@@ -2015,7 +2055,7 @@ export const kreszKivonatok: KreszKivonat = {
       '3': {
         id: '21_3',
         szoveg:
-          'Az úttesten közlekedő gyalogos az úttest szélén, egysorban halad.',
+          'Az úttesten közlekedő gyalogos az úttest szélén, egysorban halad. \n a) Lakott területen lehetőleg a menetirány szerinti bal oldalon, lakott területen kívül mindig a bal oldalon, a járműforgalommal szemben. \n b) A segédmotoros kerékpárt vagy kerékpárt toló, valamint a kerekes székkel közlekedő gyalogos a menetirány szerinti jobb oldalon haladhat. ',
         alpontok: {
           a: {
             id: '21_3_a',
@@ -2295,31 +2335,15 @@ export const kreszKivonatok: KreszKivonat = {
               ad: { id: '26_1_a_ad', szoveg: 'Lakott területen 50 km/óra.' },
             },
           },
-          a1: {
-            id: '26_1_a1',
+          'a/1': {
+            id: '26_1_a/1',
             szoveg:
-              'A külön jogszabályban meghatározott követelményeknek megfelelő autóbusszal:',
-            alpontok: {
-              a: { id: '26_1_a1_a', szoveg: 'Autópályán 100 km/óra.' },
-              b: {
-                id: '26_1_a1_b',
-                szoveg: 'Lakott területen kívül egyéb úton 70 km/óra.',
-              },
-              c: { id: '26_1_a1_c', szoveg: 'Lakott területen 50 km/óra.' },
-            },
+              'A külön jogszabályban meghatározott követelményeknek megfelelő autóbusszal: \n - Autópályán 100 km/óra. \n - Lakott területen kívül egyéb úton 70 km/óra. \n - Lakott területen 50 km/óra.',
           },
           b: {
             id: '26_1_b',
             szoveg:
-              'Egyéb gépjárművel, valamint gépjárműből és pótkocsiból álló járműszerelvénnyel:',
-            alpontok: {
-              a: { id: '26_1_b_a', szoveg: 'Autópályán 80 km/óra.' },
-              b: {
-                id: '26_1_b_b',
-                szoveg: 'Lakott területen kívül egyéb úton 70 km/óra.',
-              },
-              c: { id: '26_1_b_c', szoveg: 'Lakott területen 50 km/óra.' },
-            },
+              'Egyéb gépjárművel, valamint gépjárműből és pótkocsiból álló járműszerelvénnyel: \n - Autópályán 80 km/óra. \n - Lakott területen kivant egyéb úton 70 km/óra. \n - Lakott területen 50 km/óra.',
           },
           c: {
             id: '26_1_c',
@@ -2340,16 +2364,16 @@ export const kreszKivonatok: KreszKivonat = {
             szoveg:
               'Lakott területen kívül kerékpárral, fejvédő sisak nélkül 40 km/óra.',
           },
-          d1: {
-            id: '26_1_d1',
+          'd/1': {
+            id: '26_1_d/1',
             szoveg: 'Hólánccal felszerelt gépjárművel 50 km/óra.',
           },
-          d2: {
-            id: '26_1_d2',
+          'd/2': {
+            id: '26_1_d/2',
             szoveg: 'Kerékpárúton közlekedő járművel 30 km/óra.',
           },
-          d3: {
-            id: '26_1_d3',
+          'd/3': {
+            id: '26_1_d/3',
             szoveg: 'Gyalog- és kerékpárúton közlekedő járművel 20 km/óra.',
           },
           e: {
@@ -2426,16 +2450,8 @@ export const kreszKivonatok: KreszKivonat = {
         alpontok: {
           a: {
             id: '27_2_a',
-            szoveg: 'Nem szükséges ilyen távolság tartása, ha:',
-            alpontok: {
-              a1: { id: '27_2_a_1', szoveg: 'a vezető előzésre készül fel,' },
-              a2: {
-                id: '27_2_a_2',
-                szoveg:
-                  'az úttest jobb oldalán két vagy több forgalmi sáv van,',
-              },
-              a3: { id: '27_2_a_3', szoveg: 'az úton az előzés tilos.' },
-            },
+            szoveg:
+              'Nem szükséges ilyen távolság tartása, ha: \n a vezető előzésre készül fel, \n az úttest jobb oldalán két vagy több forgalmi sáv van, \n az úton az élözés tilos.',
           },
           b: {
             id: '27_2_b',
@@ -2531,12 +2547,11 @@ export const kreszKivonatok: KreszKivonat = {
 
   '30': {
     paragrafus: '30',
-    cim: '30. § – Hangjelzés',
+    cim: '30. § – Hangjelzést adni csak balesetveszély esetében, a baleset megelőzése érdekében, valamint – lakott területen kivül – az előzési szándék jelzése céljából szabad.',
     bekezdesek: {
       '1': {
         id: '30_1',
-        szoveg:
-          'Hangjelzést csak balesetveszély esetén, illetve lakott területen kívül előzési szándék jelzésére szabad adni.',
+        szoveg: '',
       },
     },
   },
@@ -2587,7 +2602,7 @@ export const kreszKivonatok: KreszKivonat = {
       '5': {
         id: '31_5',
         szoveg:
-          'Bekanyarodás esetén elsőbbséget kell adni a keresztezett forgalom egyes résztvevőinek.',
+          'Bekanyarodás esetén elsőbbséget kell adni (kivéve megkülönböztető fényjelzés, tábla,stb...) a keresztezett forgalom egyes résztvevőinek. \n a) Jobbra vagy balra bekanyarodó járművel az arra az útra áthaladó gyalogosnak, amelyre a jármű bekanyarodik, valamint az azonos irányból érkező villamosnak. \n b) Jobbra bekanyarodó járművel a kerékpársávon vagy az úttest mellett jobbra elhelyezkedő kerékpárúton, gyalog- és kerékpárúton érkező járműnek és gyalogosnak. \n  c) Balra bekanyarodó járművel a szemből érkező és egyenesen továbbhaladó vagy jobbra bekanyarodó járműnek, valamint az úttest mellett balra elhelyezkedő kerékpárúton, gyalog- és kerékpárúton érkező járműnek és gyalogosnak.',
         alpontok: {
           a: {
             id: '31_5_a',
@@ -2602,7 +2617,17 @@ export const kreszKivonatok: KreszKivonat = {
           c: {
             id: '31_5_c',
             szoveg:
-              'Balra bekanyarodó járművel a szemből érkező és egyenesen továbbhaladó vagy jobbra bekanyarodó járműnek, valamint az úttest mellett balra elhelyezkedő kerékpárúton, gyalog- és kerékpárúton érkező járműnek és gyalogosnak.',
+              'Balra bekanyarodó járművel \n ca) a szemből érkező és egyenesen továbbhaladó vagy jobbra bekanyarodó járműnek, \n cb) az úttest mellett balra elhelyezkedő kerékpárúton, gyalog- és kerékpárúton érkező járműnek és gyalogosnak.',
+          },
+          ca: {
+            id: '31_5_ca',
+            szoveg:
+              'Balra bekanyarodó járművel \n ca) a szemből érkező és egyenesen továbbhaladó vagy jobbra bekanyarodó járműnek, ',
+          },
+          cb: {
+            id: '31_5_cb',
+            szoveg:
+              'Balra bekanyarodó járművel  \n cb) az úttest mellett balra elhelyezkedő kerékpárúton, gyalog- és kerékpárúton érkező járműnek és gyalogosnak.',
           },
         },
       },
@@ -2746,7 +2771,8 @@ export const kreszKivonatok: KreszKivonat = {
 
       '3': {
         id: '34_3',
-        szoveg: 'Az előzést balról kell végrehajtani.',
+        szoveg:
+          'Az előzést balról kell végrehajtani. \n kivéve: \n (4) Jobbról csak meghatározott esetekben szabad előzni \n a) Balra bekanyarodást jelző és annak megfelelően elhelyezkedő jármű esetén \n b) Az úttest közepén vagy egyirányú úton bal oldalon haladó villamos esetén \n (5) Figyelmeztető jelzést használó jármű jobbról is előzhető, ha az nem veszélyezteti a többi közlekedőt.',
       },
 
       '4': {
@@ -3302,46 +3328,46 @@ export const kreszKivonatok: KreszKivonat = {
       },
     },
   },
-  '39A': {
+  '39/A': {
     paragrafus: '39/A',
     cim: '39/A. § – Közlekedés lakó-pihenő övezetben',
 
     bekezdesek: {
       '1': {
-        id: '39A_1',
+        id: '39/A_1',
         szoveg:
           'Lakó-pihenő övezetbe a „Lakó-pihenő övezet” jelzőtáblától a „Lakó-pihenő övezet vége” jelzőtábláig terjedő területre csak meghatározott járművek hajthatnak be.',
         alpontok: {
           a: {
-            id: '39A_1_a',
+            id: '39/A_1_a',
             szoveg: 'Kerékpár.',
           },
           b: {
-            id: '39A_1_b',
+            id: '39/A_1_b',
             szoveg:
               'Az ott lakókat vagy az oda látogatókat szállító személygépkocsi, továbbá a személygépkocsi kivételével a legfeljebb 3500 kg megengedett legnagyobb össztömegű gépkocsi, a betegszállító gépjármű, a motorkerékpár, a motoros tricikli és ezekhez kapcsolt pótkocsi, a segédmotoros kerékpár, az állati erővel vont jármű, a kézikocsi, valamint a kommunális szemét szállítására szolgáló jármű és az oda áruszállítást végző legfeljebb 3500 kg megengedett legnagyobb össztömegű tehergépkocsi.',
           },
           c: {
-            id: '39A_1_c',
+            id: '39/A_1_c',
             szoveg:
               'Az ott lakók és az oda költözők költöztetését végző tehergépkocsi.',
           },
           d: {
-            id: '39A_1_d',
+            id: '39/A_1_d',
             szoveg: 'Az oda látogatókat szállító autóbusz.',
           },
           e: {
-            id: '39A_1_e',
+            id: '39/A_1_e',
             szoveg:
               'Az oda építő- és tüzelőanyagot szállító tehergépkocsi és a hozzákapcsolt pótkocsi.',
           },
           f: {
-            id: '39A_1_f',
+            id: '39/A_1_f',
             szoveg:
               'Az út- és közműépítésre vagy -fenntartásra, köztisztasági, rendvédelmi, betegszállítási, közegészségügyi feladat, valamint postai gyűjtő- és kézbesítő szolgálat ellátására szolgáló jármű, ha a behajtás a feladat ellátása érdekében elkerülhetetlen.',
           },
           g: {
-            id: '39A_1_g',
+            id: '39/A_1_g',
             szoveg:
               'A mozgáskorlátozott személy által vezetett, illetve az őt szállító jármű és annak vezetője.',
           },
@@ -3349,23 +3375,23 @@ export const kreszKivonatok: KreszKivonat = {
       },
 
       '2': {
-        id: '39A_2',
+        id: '39/A_2',
         szoveg:
           'A lakó-pihenő övezetben járművel legfeljebb 20 km/óra sebességgel szabad közlekedni.',
       },
 
       '3': {
-        id: '39A_3',
+        id: '39/A_3',
         szoveg:
           'A lakó-pihenő övezetben a járművezető köteles fokozottan ügyelni a gyalogosok és a kerékpárosok biztonságára.',
         alpontok: {
           a: {
-            id: '39A_3_a',
+            id: '39/A_3_a',
             szoveg:
               'Járda hiányában a gyalogosok az úttest teljes szélességét használhatják, a járműforgalmat azonban szükségtelenül nem akadályozhatják.',
           },
           b: {
-            id: '39A_3_b',
+            id: '39/A_3_b',
             szoveg:
               'Járművel várakozni csak az erre kijelölt területen szabad.',
           },
@@ -3547,7 +3573,7 @@ export const kreszKivonatok: KreszKivonat = {
 
       '2': {
         id: '41_2',
-        szoveg: 'Tilos várakozni meghatározott helyeken.',
+        szoveg: 'Tilos várakozni:',
         alpontok: {
           a: {
             id: '41_2_a',
@@ -3622,15 +3648,32 @@ export const kreszKivonatok: KreszKivonat = {
       },
     },
   },
-  '42A': {
-    paragrafus: '42/A',
-    cim: '42/A. § – Magatartás veszélyes anyagot szállító járművekkel szemben',
+  '42': {
+    paragrafus: '42',
+    cim: '42. § – Kikerülés',
 
     bekezdesek: {
       '1': {
-        id: '42A_1',
+        id: '42_1',
         szoveg:
-          'A veszélyes anyagot szállító járművet csak fokozott óvatossággal szabad megközelíteni, mellette elhaladni vagy megelőzni.',
+          'A megkülönböztető jelzéseket (villogó kék fényjelzést és szirénát vagy váltakozó hangmagasságú más hangjelzést) használó gépjármű, illetőleg minden ilyen gépjárművekkel kísért (közrefogott) zárt csoportban haladó, megkülönböztető fényjelzést használó gépjármű részére minden járművel, minden helyzetben elsőbbséget kell adni, és akadálytalan továbbhaladását — félrehúzódással és a szükséghez képest megállással — lehetővé kell tenni.',
+      },
+
+      '2': {
+        id: '42_2',
+        szoveg:
+          'Megkülönböztető fényjelzést használó, álló járművet megközelíteni, illetőleg mellette elhaladni csak fokozott óvatossággal szabad.',
+      },
+    },
+  },
+  '42/A': {
+    paragrafus: '42/A',
+    cim: '42/A. § – Magatartás veszélyes anyagot szállító járművekkel szemben \n A veszélyes anyagot szállító járművet csak fokozott óvatossággal szabad megközelíteni, mellette elhaladni vagy megelőzni.',
+
+    bekezdesek: {
+      '1': {
+        id: '42/A_1',
+        szoveg: '',
       },
     },
   },
@@ -4255,7 +4298,7 @@ export const kreszKivonatok: KreszKivonat = {
         alpontok: {
           a: {
             id: '50_1_a',
-            szoveg: 'Ha a jármű meghatározott közfeladatot végez.',
+            szoveg: 'Ha a jármű:',
             alpontok: {
               aa: {
                 id: '50_1_a_aa',
@@ -4358,7 +4401,7 @@ export const kreszKivonatok: KreszKivonat = {
       '2': {
         id: '50_2',
         szoveg:
-          'Az (1) bekezdés a) alpontja szerinti tevékenységet végző jármű vezetője meghatározott feltételek mellett eltérhet egyes közlekedési szabályoktól.',
+          'Az (1) bekezdés a) alpontja szerinti (közfeladatot, közmű építési) tevékenységet végző jármű vezetője meghatározott feltételek mellett eltérhet egyes közlekedési szabályoktól.',
         alpontok: {
           a: {
             id: '50_2_a',
@@ -4448,15 +4491,14 @@ export const kreszKivonatok: KreszKivonat = {
     },
   },
 
-  '51A': {
+  '51/A': {
     paragrafus: '51/A',
-    cim: '51/A. § – A mozgáskorlátozottak külön engedélye és jelzése',
+    cim: '51/A. § – A mozgáskorlátozottak külön engedélye és jelzése \n A mozgásában korlátozott személyt, valamint az őt szállító jármű vezetőjét külön közlekedési és várakozási jogosultság illeti meg, ha a mozgáskorlátozott személy részére kiállított parkolási igazolvány a járműben elhelyezésre került',
 
     bekezdesek: {
       '1': {
-        id: '51A_1',
-        szoveg:
-          'A mozgásában korlátozott személyt, valamint az őt szállító jármű vezetőjét külön közlekedési és várakozási jogosultság illeti meg, ha a mozgáskorlátozott személy részére kiállított parkolási igazolvány a járműben elhelyezésre került.',
+        id: '51/A_1',
+        szoveg: ' ',
       },
     },
   },
@@ -4543,7 +4585,7 @@ export const kreszKivonatok: KreszKivonat = {
 
       '4': {
         id: '54_4',
-        cim: 'Balra kanyarodás és megfordulás tilalma',
+        szoveg: 'Balra kanyarodás és megfordulás tilalma',
         alpontok: {
           a: {
             id: '54_4_a',
@@ -4566,7 +4608,8 @@ export const kreszKivonatok: KreszKivonat = {
 
       '6': {
         id: '54_6',
-        cim: 'Világítás és láthatóság',
+        szoveg:
+          'A kerékpárral éjszaka és korlátozott látási viszonyok között abban az esetben szabad közlekedni, ha a kerékpáron vagy a kerékpároson',
         alpontok: {
           a: {
             id: '54_6_a',
@@ -4583,7 +4626,7 @@ export const kreszKivonatok: KreszKivonat = {
 
       '7': {
         id: '54_7',
-        cim: 'Kerékpározási tilalmak',
+        szoveg: 'Tilos kerékpározni:',
         alpontok: {
           a: {
             id: '54_7_a',
@@ -4617,7 +4660,8 @@ export const kreszKivonatok: KreszKivonat = {
 
       '8': {
         id: '54_8',
-        cim: 'Segédmotoros kerékpárokra vonatkozó eltérések – a quad és a mopedautó kivételével – ',
+        szoveg:
+          'Segédmotoros kerékpárokra vonatkozó eltérések – a quad és a mopedautó kivételével – ',
         alpontok: {
           a: {
             id: '54_8_a',
@@ -4898,12 +4942,6 @@ export const kreszKivonatok: KreszKivonat = {
         },
       },
 
-      '1a': {
-        id: '59_1a',
-        szoveg:
-          'A jármű elszállításáról a közterület-felügyeletnek, illetve a közút kezelőjének a rendőrséget is értesítenie kell.',
-      },
-
       '2': {
         id: '59_2',
         szoveg:
@@ -5063,377 +5101,340 @@ export const kreszKivonatok: KreszKivonat = {
       },
     },
   },
-  //   '1_szamu_fuggelek': {
-  //     cim: '1. számú függelék – A rendeletben használt egyes fogalmak meghatározása',
-
-  //     bekezdesek: {
-  //       I: {
-  //         cim: 'Az úttal kapcsolatos fogalmak',
-
-  //         fogalmak: {
-  //           a: {
-  //             szoveg:
-  //               'Út: a gyalogosok és a közúti járművek közlekedésére szolgáló közterület (közút), illetőleg magánterület (közforgalom elől el nem zárt magánút).',
-  //           },
-
-  //           b: {
-  //             szoveg:
-  //               'Járda: az útnak a gyalogosok közlekedésére szolgáló – az úttesttől szintkülönbséggel, kiemelt szegéllyel, vagy más látható módon elhatárolt – része; a gyalogút azonban nem járda.',
-  //           },
-
-  //           c: {
-  //             szoveg:
-  //               'Úttest: az útnak a közúti járművek közlekedésére szolgáló része.',
-  //           },
-
-  //           d: {
-  //             szoveg:
-  //               'A menetirány szerinti jobb oldal: az úttestnek az a része, amely – a menetirányt tekintve – az úttest útburkolati jellel megjelölt vagy képzeletbeli felezővonalától jobb oldalra esik. Egyirányú forgalmú úton és körforgalmú úton az úttest, továbbá osztottpályás úton a menetirányt tekintve jobb oldalra eső úttest teljes szélességében menetirány szerinti jobb oldalnak tekintendő.',
-  //           },
-
-  //           e: {
-  //             szoveg:
-  //               'Forgalmi sáv: az úttestnek egy gépkocsisor biztonságos közlekedésére elegendő szélességű – akár útburkolati jellel megjelölt, akár meg nem jelölt – része.',
-  //           },
-
-  //           f: {
-  //             szoveg:
-  //               'Leállósáv: az útnak az úttesttel azonos szintben levő, attól útburkolati jellel elválasztott és útburkolattal ellátott része.',
-  //           },
-
-  //           'f/1': {
-  //             szoveg:
-  //               'Kerékpársáv: az úttesten útburkolati jellel kijelölt – kerékpárosok egyirányú közlekedésére szolgáló – különleges forgalmi sáv.',
-  //           },
-
-  //           g: {
-  //             szoveg:
-  //               'Útpadka: az útnak az úttest mellett levő, útburkolattal el nem látott része.',
-  //           },
-
-  //           h: {
-  //             szoveg: 'Kerékpárút: jelzőtáblával kerékpárútként megjelölt út.',
-  //           },
-
-  //           'h/1': {
-  //             szoveg:
-  //               'Gyalog- és kerékpárút: jelzőtáblával gyalog- és kerékpárútként megjelölt út, amelyen a gyalogos és a kerékpáros forgalom részére fenntartott útfelületet burkolati jellel és eltérő színű burkolattal is ki lehet jelölni.',
-  //           },
-
-  //           'h/2': {
-  //             szoveg:
-  //               'Kerékpáros nyom: az úttesten kerékpárt és nyilat mutató sárga színű burkolati jellel kijelölt útfelület.',
-  //           },
-
-  //           'h/3': {
-  //             szoveg:
-  //               'Nyitott kerékpársáv: az úttesten útburkolati jellel kijelölt – kerékpár és különleges esetekben jármű egyirányú közlekedésére szolgáló – különleges forgalmi sáv.',
-  //           },
-
-  //           i: {
-  //             szoveg:
-  //               'Járdasziget: az útnak az úttesten levő, attól kiemelt szegéllyel elválasztott és körülhatárolt – a járműforgalom elől elzárt, a gyalogosok védelmére vagy a járműforgalom irányítására szolgáló – része.',
-  //           },
-
-  //           j: {
-  //             szoveg:
-  //               'Osztottpályás út: olyan út, amelynek a két forgalmi irány céljára – egymástól járdaszigettel, növényzettel, zárt villamospályával vagy más hasonló módon elválasztott – két külön úttestje van.',
-  //           },
-
-  //           k: {
-  //             szoveg:
-  //               'Útkereszteződés: két vagy több útnak azonos szintben való kereszteződése, egymásba torkollása, illetőleg elágazása.',
-  //           },
-
-  //           l: {
-  //             szoveg:
-  //               'Autópálya: jelzőtáblával autópályaként megjelölt osztottpályás út.',
-  //           },
-
-  //           m: {
-  //             szoveg: 'Autóút: jelzőtáblával autóútként megjelölt út.',
-  //           },
-
-  //           n: {
-  //             szoveg: 'Főútvonal: jelzőtáblával főútvonalként megjelölt út.',
-  //           },
-
-  //           o: {
-  //             szoveg:
-  //               'Gyalogút: jelzőtáblával gyalogútként megjelölt út, illetőleg olyan út, amely kizárólag a gyalogosok közlekedésére szolgál és az úttesttől tartós fizikai akadály vagy két méternél nagyobb távolság választja el.',
-  //           },
-
-  //           p: {
-  //             szoveg:
-  //               'Útzár: a közútnak rendőrségi ellenőrzés céljából, a járművek továbbhaladását akadályozó eszközökkel történő lezárása.',
-  //           },
-
-  //           r: {
-  //             szoveg:
-  //               'Biztosított vasúti átjáró: a közúti járművek forgalmát teljes sorompó; teljes sorompó és piros fényt adó kiegészítő berendezés; hangjelző berendezés; fénysorompó; félsorompóval kiegészített fénysorompó; jelzőőr szabályozza.',
-  //           },
-
-  //           s: {
-  //             szoveg:
-  //               'Biztosítatlan vasúti átjáró: a közúti járművek forgalmát az r) pontban meghatározott berendezések vagy jelzőőr nem szabályozza.',
-  //           },
-
-  //           sz: {
-  //             szoveg:
-  //               'Földút: jármű közlekedésre szabadon tartott, eredeti termett talajú vagy ahhoz hasonló anyagú út, amelyen legfeljebb talajszerkezetet javító beavatkozás történt.',
-  //           },
-
-  //           t: {
-  //             szoveg:
-  //               'Szilárd burkolatú út: olyan út, amelynek úttestje szabályosan lerakott kő vagy műkő, továbbá beton vagy aszfalt burkolattal rendelkezik.',
-  //           },
-  //         },
-  //       },
-  //       II: {
-  //         cim: 'A közúti járművekkel kapcsolatos fogalmak',
-
-  //         fogalmak: {
-  //           a: {
-  //             szoveg:
-  //               'Jármű: közúti szállító- vagy vontató eszköz, ideértve az önjáró vagy vontatott munkagépet is. A mozgáskorlátozottak közlekedésére szolgáló, emberi erővel tolt vagy hajtott kerekes szék és a gépi meghajtású kerekes szék – ha sík úton önerejéből 10 km/óra sebességnél gyorsabban haladni nem képes, továbbá a gyermekkocsi és a talicska – azonban nem minősül járműnek. Az ilyen eszközökkel közlekedő személyek gyalogosoknak minősülnek.',
-  //           },
-
-  //           b: {
-  //             szoveg:
-  //               'Gépjármű: olyan jármű, amelyet beépített erőgép hajt. A mezőgazdasági vontató, a lassú jármű, a segédmotoros kerékpár és a villamos azonban nem minősül gépjárműnek.',
-  //           },
-
-  //           c: {
-  //             szoveg:
-  //               'Gépkocsi: olyan gépjármű, melynek négy vagy több kereke van; a négy kerekű motorkerékpár azonban nem gépkocsi.',
-  //           },
-
-  //           d: {
-  //             szoveg:
-  //               'Személygépkocsi: személyszállítás céljára készült olyan gépkocsi, amelyben – a vezető ülését is beleértve – legfeljebb 9 állandó ülőhely van.',
-  //           },
-
-  //           e: {
-  //             szoveg:
-  //               'Autóbusz: személyszállítás céljára készült, elektromos felsővezetékhez nem kötött olyan gépkocsi, amelyben – a vezető ülését is beleértve – kilencnél több állandó ülőhely van.',
-  //           },
-
-  //           f: {
-  //             szoveg: 'Trolibusz: elektromos felsővezetékhez kötött gépkocsi.',
-  //           },
-
-  //           g: {
-  //             szoveg:
-  //               'Vontató: pótkocsi vontatására készült, rakfelület nélküli gépkocsi.',
-  //           },
-
-  //           h: {
-  //             szoveg:
-  //               'Nyerges vontató: olyan vontató, amely a rajta levő nyeregszerkezet útján a vontatott félpótkocsi súlyának jelentős részét átveszi.',
-  //           },
-
-  //           i: {
-  //             szoveg:
-  //               'Tehergépkocsi: a személygépkocsit, az autóbuszt, a trolibuszt és a vontatót kivéve minden gépkocsi.',
-  //           },
-
-  //           'i/1': {
-  //             szoveg:
-  //               'Nehéz tehergépkocsi: tehergépkocsi, vontató, valamint e járművekből és pótkocsiból álló járműszerelvény, amelynek megengedett legnagyobb össztömege a 7,5 tonnát meghaladja.',
-  //           },
-
-  //           j: {
-  //             szoveg:
-  //               'Motorkerékpár: a külön jogszabályban L3e járműkategóriába sorolt kétkerekű oldalkocsi nélküli, L4e járműkategóriába sorolt oldalkocsival rendelkező jármű, továbbá a motoros tricikli.',
-  //           },
-
-  //           k: {
-  //             szoveg:
-  //               'Motoros tricikli: a külön jogszabályban L5e járműkategóriába sorolt háromkerekű és L7e járműkategóriába sorolt négykerekű motorkerékpár.',
-  //           },
-
-  //           l: {
-  //             szoveg:
-  //               'Mezőgazdasági vontató: kerekes vagy lánctalpas kialakítású, legalább két tengellyel rendelkező, pótkocsi vontatására és/vagy mezőgazdasági, erdészeti feladatú berendezések, gépek vontatására, hordozására, tolására, működtetésére alkalmas, 25 km/óra sebességnél gyorsabban haladni képes jármű, mely teher- és személyszállításra is alkalmas lehet.',
-  //           },
-
-  //           m: {
-  //             szoveg:
-  //               'Lassú jármű: olyan jármű, amelyet beépített erőgép hajt és sík úton önerejéből 25 km/óra sebességnél gyorsabban haladni nem képes.',
-  //           },
-
-  //           n: {
-  //             szoveg:
-  //               'Pótkocsi: olyan jármű, amely gépjárművel, mezőgazdasági vontatóval vagy lassú járművel történő vontatásra készült. A legfeljebb 750 kilogramm megengedett legnagyobb össztömegű pótkocsi: könnyű pótkocsi, az ennél nagyobb össztömegű pótkocsi: nehéz pótkocsi.',
-  //           },
-
-  //           o: {
-  //             szoveg:
-  //               'Félpótkocsi: olyan pótkocsi, amely a vontató nyeregszerkezetére támaszkodik úgy, hogy súlyának jelentős részét a vontató veszi át.',
-  //           },
-
-  //           p: {
-  //             szoveg:
-  //               'Járműszerelvény: gépjárműből, mezőgazdasági vontatóból vagy lassú járműből és hozzákapcsolt pótkocsiból (egyéb vontatmányból) álló, a forgalomban egy vezetővel, egységként résztvevő járműkombináció.',
-  //           },
-
-  //           r: {
-  //             szoveg:
-  //               'Segédmotoros kerékpár: a külön jogszabályban L1e járműkategóriába sorolt kétkerekű, L2e járműkategóriába sorolt háromkerekű jármű, továbbá az L6e járműkategóriába sorolt quad és mopedautó.',
-  //           },
-
-  //           'r/1': {
-  //             szoveg:
-  //               'Kerékpár: olyan, legalább kétkerekű jármű, amelyet emberi erő hajt, és ezt legfeljebb 300 W teljesítményű motor segíti.',
-  //           },
-
-  //           'r/2': {
-  //             szoveg:
-  //               'Quad: a külön jogszabályban L6e járműkategóriába sorolt könnyű négykerekű segédmotoros kerékpár vagy L7e járműkategóriába sorolt négykerekű motorkerékpár, amely nyitott utasterű.',
-  //           },
-
-  //           'r/3': {
-  //             szoveg:
-  //               'Mopedautó: a külön jogszabályban L6e járműkategóriába sorolt könnyű négykerekű segédmotoros kerékpár, amely zárt utasterű.',
-  //           },
-
-  //           s: {
-  //             szoveg:
-  //               'Villamos: olyan jármű, amely az úttestbe épített, vasúti pályaként meg nem jelölt sínpályán való közlekedésre szolgál.',
-  //           },
-
-  //           sz: {
-  //             szoveg:
-  //               'Veszélyes anyagot szállító jármű: olyan jármű, amelyet elején és hátulján narancssárga alapszínű, felirat nélküli vagy felirattal ellátott táblával jelöltek meg.',
-  //           },
-
-  //           t: {
-  //             szoveg:
-  //               'Sajáttömeg: üzemanyaggal feltöltött és a szükséges tartozékokkal ellátott üres jármű tömege.',
-  //           },
-
-  //           u: {
-  //             szoveg:
-  //               'Össztömeg: a jármű saját tömegének, valamint a rajta levő személyeknek, rakománynak és egyéb tárgyaknak az együttes tömege.',
-  //           },
-
-  //           v: {
-  //             szoveg:
-  //               'Megengedett legnagyobb össztömeg: az illetékes hatóság által meghatározott az a tömeg, amelyet a jármű össztömege nem haladhat meg.',
-  //           },
-
-  //           w: {
-  //             szoveg:
-  //               'Gyermekbiztonsági rendszer: a gyermek járműben történő biztonságos szállítására szolgáló eszköz.',
-  //           },
-
-  //           x: {
-  //             szoveg:
-  //               'Betegszállító gépjármű: külön jogszabály szerint ilyennek megjelölt és üzemeltetett jármű.',
-  //           },
-
-  //           y: {
-  //             szoveg:
-  //               'Iskolabusz: kizárólag gyermekek, tanulók szállítására rendszeresített autóbusz.',
-  //           },
-
-  //           'y/1': {
-  //             szoveg:
-  //               'Gyermekeket szállító autóbusz: nem menetrend szerint közlekedő, kizárólag gyermekek szállítására igénybe vett autóbusz.',
-  //           },
-
-  //           z: {
-  //             szoveg:
-  //               'Tengelyterhelés: a jármű egy-egy tengelyén levő kerekek által a vízszintes talajra átvitt súly.',
-  //           },
-
-  //           zs: {
-  //             szoveg:
-  //               'Mezőgazdasági erőgép és vontatmánya: a külön jogszabályban meghatározott járművek.',
-  //           },
-  //         },
-  //       },
-  //       III: {
-  //         cim: 'A közúti forgalommal kapcsolatos fogalmak',
-
-  //         fogalmak: {
-  //           a: {
-  //             szoveg:
-  //               'Vezető: az a személy, aki az úton járművet vezet, vagy állatot hajt (vezet). A segédmotoros kerékpárt és a kerékpárt toló személy nem minősül vezetőnek. A gépkocsivezetés oktatása és az azt követő gyakorlati vizsga során vezetőnek az oktató minősül.',
-  //           },
-
-  //           b: {
-  //             szoveg:
-  //               'Elsőbbség: továbbhaladási jog a közlekedés más résztvevőjével szemben. Azt a járművet, amelynek elsőbbsége van, az elsőbbségadásra kötelezett nem kényszerítheti haladási irányának vagy sebességének hirtelen megváltoztatására. Azt a gyalogost, akinek elsőbbsége van, az elsőbbségre kötelezett nem akadályozhatja és nem zavarhatja áthaladásában.',
-  //           },
-
-  //           c: {
-  //             szoveg:
-  //               'Előzés: járművel az úttesten azonos irányban haladó jármű melletti elhaladás. Párhuzamos közlekedés esetében a különböző forgalmi sávokban folyamatosan haladó járművek egymás melletti elhaladása nem minősül előzésnek.',
-  //           },
-
-  //           d: {
-  //             szoveg:
-  //               'Megállás: járművel a be- és a kiszálláshoz, vagy a folyamatos fel- és lerakáshoz szükséges ideig, illetőleg – ha a vezető a járműnél marad – egyéb okból legfeljebb 5 percig történő egy helyben tartózkodás.',
-  //           },
-
-  //           e: {
-  //             szoveg:
-  //               'Várakozás: járművel a megállásnál hosszabb ideig történő egyhelyben tartózkodás.',
-  //           },
-
-  //           f: {
-  //             szoveg:
-  //               'Lakott terület: a lakott terület kezdetét és végét jelző táblák közé eső terület.',
-  //           },
-
-  //           g: {
-  //             szoveg:
-  //               'Éjszaka: az esti szürkület kezdetétől a reggeli szürkület megszűnéséig terjedő időszak.',
-  //           },
-
-  //           h: {
-  //             szoveg:
-  //               'Korlátozott látási viszonyok: az átlagos látási viszonyoknak felhősödés, köd, eső, hóesés, porfelhő vagy más ok miatt előállt jelentősebb korlátozottsága.',
-  //           },
-
-  //           i: {
-  //             szoveg:
-  //               'Mobil rádiótelefon: a közcélú mobil rádiótelefon szolgáltatás igénybevételére alkalmas készülék (végberendezés).',
-  //           },
-
-  //           j: {
-  //             szoveg:
-  //               'Gyermekbiztonsági rendszer testsúly szerinti csoportba sorolása: a benne elhelyezhető gyermek testsúlya szerint:',
-  //             pontok: {
-  //               a: {
-  //                 szoveg: '0. csoport: 10 kg testsúly alatt.',
-  //               },
-  //               b: {
-  //                 szoveg: '0+. csoport: 13 kg testsúly alatt.',
-  //               },
-  //               c: {
-  //                 szoveg: 'I. csoport: 9–18 kg testsúlyig.',
-  //               },
-  //               d: {
-  //                 szoveg: 'II. csoport: 15–25 kg testsúlyig.',
-  //               },
-  //               e: {
-  //                 szoveg: 'III. csoport: 22–36 kg testsúlyig.',
-  //               },
-  //               f: {
-  //                 szoveg:
-  //                   'Csoportba sorolás nélkül: a gyártó által meghatározott és a gyermekbiztonsági rendszeren feltüntetett mérettartomány és megengedett legnagyobb testsúly.',
-  //               },
-  //             },
-  //           },
-
-  //           k: {
-  //             szoveg:
-  //               'Fényvisszaverő mellény (ruházat): az MSZ EN 471:2003. számú szabványban meghatározott követelményeknek megfelelő mellény vagy ruházat.',
-  //           },
-  //         },
-  //       },
-  //     },
-  //   },
+};
+
+export const torveny: Record<string, TorvenyItem> = {
+  '12/2007 IRM rendelet': {
+    tv: '12/2007 IRM rendelet a megkülönböztető és figyelmeztető jelzést adó készülékek felszerelésének és használatának szabályairól',
+    url: 'https://njt.hu/jogszabaly/2007-12-20-1U',
+
+    paragrafusok: {
+      '2': {
+        children: {
+          '1': {
+            text: 'A gépjárműre megkülönböztető jelzést adó készüléket csak hatósági engedéllyel lehet felszerelni.',
+          },
+        },
+      },
+    },
+  },
+
+  '326/2011. (XII.28.) Korm. r.': {
+    tv: '326/2011. (XII.28.) Korm. rend. a közúti közlekedési igazgatási feladatokról, a közúti közlekedési okmányok kiadásáról és visszavonásáról',
+    url: 'https://njt.hu/jogszabaly/2011-326-20-22',
+
+    paragrafusok: {
+      '5': {
+        text: '',
+        children: {
+          '5': {
+            text: 'A vezetői engedély vezetési jogosultság igazolására a következő határidőig alkalmas \n a) a vezetői engedély hátoldalán a 11. pontban feltüntetett kategória érvényesség időpontjáig, amely az egészségi alkalmassági vizsgálaton megállapított időpont, /n b) az egészségi alkalmassági vizsgálat nélkül is vezethető kategóriákra a vezetői engedély első oldalán a 4.b) pontban feltüntetett érvényesség időpontjáig, de legfeljebb a vezetői engedély kiállítását követő tíz évig.',
+          },
+        },
+      },
+
+      '69': {
+        children: {
+          '3': {
+            text: 'Az M betűjelű ideiglenes rendszámtáblával ellátott jármű vezetője köteles igazolni...',
+          },
+        },
+      },
+
+      '70': {
+        children: {
+          '3': {
+            text: 'P betűjelű ideiglenes rendszám csak megfelelő képesítéssel vezethető.',
+          },
+          '5': {
+            text: 'P rendszámmal személy- és teherszállítás tilos.',
+          },
+        },
+      },
+
+      '93': {
+        children: {
+          '2': {
+            text: 'Az M betűjelű ideiglenes rendszámtáblát csak az indítási naplóban bejegyzett járműre lehet felszerelni.',
+          },
+        },
+      },
+    },
+  },
+
+  '2012. évi II. törvény': {
+    tv: '2012. évi II. törvény a szabálysértésekről, a szabálysértési eljárásról és a szabálysértési nyilvántartási rendszerről',
+    url: 'https://njt.hu/jogszabaly/2012-2-00-00.79',
+
+    paragrafusok: {
+      '172': {
+        text: '',
+        children: {
+          '1': {
+            text: 'Aki törvényben vagy törvény felhatalmazása alapján hozott önkormányzati rendeletben a szexuális szolgáltatással összefüggő korlátozást, illetve tilalmat megszegi, szabálysértést követ el.',
+          },
+          '2': {
+            text: 'Nem büntethető a szexuális szolgáltatásra felajánlkozás tilalmának megszegése miatt az elkövető, ha a cselekmény elkövetésekor a tizennyolcadik életévét nem töltötte be.',
+          },
+          '3': {
+            text: 'Ha a helyszínen kétséget kizáróan megállapítást nyer, hogy a szexuális szolgáltatásra felajánlkozás tilalmát megszegő személy a tizennyolcadik életévét nem töltötte be, a szabálysértési eljárás megindításának vele szemben nincs helye.',
+          },
+          '4': {
+            text: 'A szexuális szolgáltatásra felajánlkozás tilalmát megszegő, a (2) bekezdés alapján nem büntethető személyt, ha a tényállás tisztázásához szükséges, előkészítő eljárásban tanúként kell meghallgatni.',
+          },
+          '5': {
+            text: ' Ha a (3) vagy a (4) bekezdés alapján megállapítást nyer, hogy a szexuális szolgáltatásra felajánlkozás tilalmát megszegő személy a tizennyolcadik életévét nem töltötte be, a rendőrség – a gyermekek védelméről és a gyámügyi igazgatásról szóló törvény alapján – a szexuális szolgáltatásra felajánlkozás tilalmát megszegő személy védelmében azonnal végrehajtható általános védelmi intézkedést hoz, amely döntéséről értesíti a gyámhatóságot, valamint gondoskodik az elhelyezéséről vagy a szállításáról.',
+          },
+        },
+      },
+      '176': {
+        text: '',
+        children: {
+          '1': {
+            text: 'Aki vasúti járművet, légi járművet, gépi meghajtású vízi járművet, úszó munkagépet, illetve a közúti forgalomban gépi meghajtású járművet úgy vezet, hogy annak vezetésére hatósági engedéllyel nem rendelkezik, szabálysértést követ el.',
+          },
+          '2': {
+            text: 'Aki vasúti jármű, légi jármű, gépi meghajtású vízi jármű, úszó munkagép, illetve a közúti forgalomban gépi meghajtású jármű vezetését olyan személy részére átengedi, aki annak vezetésére hatósági engedéllyel nem rendelkezik, szabálysértést követ el.',
+          },
+        },
+      },
+      '177': {
+        text: '',
+        children: {
+          '1': {
+            text: 'Aki \n a) ötvenezer forintot meg nem haladó értékre lopást, sikkasztást, jogtalan elsajátítást, \n b) ötvenezer forintot meg nem haladó kárt okozva csalást, szándékos rongálást, \n c) ötvenezer forintot meg nem haladó vagyoni hátrányt okozva hűtlen kezelést \n követ el, úgyszintén, aki e cselekmények elkövetését megkísérli, szabálysértést követ el. ',
+          },
+
+          '1a': {
+            text: '  Aki lopásból, sikkasztásból, csalásból, hűtlen kezelésből, rablásból, kifosztásból, zsarolásból vagy jogtalan elsajátításból származó dolgot vagyoni haszonszerzés végett ötvenezer forintot meg nem haladó értékben megszerez, elrejt vagy elidegenítésében közreműködik, szabálysértést követ el.',
+          },
+          '2': {
+            text: 'Aki idegen, nem gépi meghajtású járművet mástól azért vesz el, hogy jogtalanul használja, szabálysértést követ el.',
+          },
+          '2a': {
+            text: 'Aki földmérési jelet vagy az államhatár megjelölésére szolgáló jelet elvisz, áthelyez vagy elmozdít, szabálysértést követ el.',
+          },
+          '3': {
+            text: 'Aki a kulturális örökség védett elemeit, a vármegye-, város-, községhatár vagy a birtokhatár megjelölésére szolgáló hivatalos jelet vagy létesítményt, tömegközlekedési vagy távközlési eszközt, közúti jelzést, parkot vagy ahhoz tartozó felszerelést, természetvédelmi hatósági és tájékoztató táblát vagy egyéb közérdeket szolgáló jelet vagy létesítményt gondatlanul megsemmisít, megrongál, elvisz, áthelyez vagy elmozdít, szabálysértést követ el.',
+          },
+        },
+      },
+      '185': {
+        text: '',
+        children: {
+          '1': {
+            text: 'Aki gyermekkorú személy társaságában koldul, szabálysértést követ el.',
+          },
+          '2': {
+            text: 'Aki közterületen vagy nyilvános helyen, olyan módon koldul, hogy a járókelőket, illetve a nyilvános helyen jelenlévőket pénz átadása céljából leszólítja, továbbá az is, aki házról házra, illetve lakásról lakásra járva kéreget, szabálysértést követ el.',
+          },
+          '3': {
+            text: 'A szabálysértési hatóság, valamint a helyszíni bírságolásra jogosult szerv vagy személy haladéktalanul értesíti az (1) bekezdésben meghatározott szabálysértés tényéről, az érintett gyermek és az elkövető adatairól a gyermek lakóhelye szerint illetékes gyermekjóléti szolgálatot.',
+          },
+          '4': {
+            text: 'Az (1) és (2) bekezdésben meghatározott szabálysértés miatt a közterület-felügyelő is szabhat ki helyszíni bírságot.',
+          },
+        },
+      },
+      '192': {
+        text: '',
+        children: {
+          '1': {
+            text: 'Aki a közterületen, nyilvános helyen vagy közforgalmú közlekedési eszközön a közerkölcsbe ütköző magatartást tanúsít, szabálysértést követ el.',
+          },
+          '2': {
+            text: ' Az (1) bekezdésben meghatározott szabálysértés miatt a közterület-felügyelő is szabhat ki helyszíni bírságot.',
+          },
+        },
+      },
+      '194': {
+        text: ' (1) Aki abból a célból, hogy a büntetés-végrehajtási intézetben fogvatartottal kapcsolatot teremtsen \n a) a büntetés-végrehajtási intézetbe történő bekiabálással, \n b) feliratok vagy fényjelzések alkalmazásával, \n c) a büntetés-végrehajtási intézetbe tárgyak bedobálásával vagy annak megkísérlésével vagy \n d) az a)–c) pontban meghatározott magatartásokhoz hasonló más módon a közterület használatának, vagy a lakó- vagy más épületben tartózkodók nyugalmának megzavarására alkalmas magatartást tanúsít, szabálysértést követ el. \n \n 194/A. § Aki a fogvatartás rendjét szándékosan megsértve olyan tárgyat juttat be a büntetés-végrehajtási intézet területére, amely alkalmas a fogvatartás biztonságának veszélyeztetésére, szabálysértést követ el.',
+        children: {
+          a: {
+            text: 'a büntetés-végrehajtási intézetbe történő bekiabálással,',
+          },
+          b: {
+            text: 'feliratok vagy fényjelzések alkalmazásával,',
+          },
+          c: {
+            text: 'a büntetés-végrehajtási intézetbe tárgyak bedobálásával vagy annak megkísérlésével vagy',
+          },
+          d: {
+            text: 'az a)–c) pontban meghatározott magatartásokhoz hasonló más módon a közterület használatának, vagy a lakó- vagy más épületben tartózkodók nyugalmának megzavarására alkalmas magatartást tanúsít, szabálysértést követ el.',
+          },
+        },
+      },
+      '195': {
+        text: '',
+        children: {
+          1: {
+            text: 'Aki lakott területen, az ott levő épületben, vagy az ahhoz tartozó telken, tömegközlekedési eszközön, továbbá természeti és védett természeti területen indokolatlanul zajt okoz, amely alkalmas arra, hogy mások nyugalmát, illetve a természeti vagy a védett természeti értéket zavarja, szabálysértést követ el.',
+          },
+          2: {
+            text: 'Az (1) bekezdésben meghatározott szabálysértés miatt a közterület-felügyelő, természeti és védett természeti területen a természetvédelmi őr és helyi jelentőségű védett természeti területen az önkormányzati természetvédelmi őr is szabhat ki helyszíni bírságot.',
+          },
+        },
+      },
+      '196': {
+        text: '',
+        children: {
+          1: {
+            text: 'Aki \n a)   a közterületet, a közforgalom céljait szolgáló épületet, vagy a közforgalmú közlekedési eszközt beszennyezi, \n b)  a felügyelete alatt lévő állat által az a) pontban megjelölt helyen okozott szennyezés megszüntetéséről nem gondoskodik, szabálysértést követ el.',
+          },
+          2: {
+            text: 'a) Köztisztasági szabálysértés miatt nem vonható felelősségre az a fogyatékos személyek jogairól és esélyegyenlőségük biztosításáról szóló törvény alapján fogyatékos személynek minősülő személy, aki az (1) bekezdés b) pontjában meghatározott cselekményt a felügyelete alatt lévő vakvezető, illetve mozgáskorlátozottakat segítő kutyára vonatkozóan követi el.',
+          },
+        },
+      },
+      '200': {
+        text: '',
+        children: {
+          '1': {
+            text: 'Aki \n a) a szeszes ital árusítására vagy a közterületen történő fogyasztására vonatkozó – törvényben, kormányrendeletben vagy önkormányzati rendeletben meghatározott – tilalmat megszegi, \n b) vendéglátó üzletben tizennyolcadik életévét be nem töltött személy részére szeszes italt szolgál ki, \n c) a szeszes ital eladása során közterületen vagy nyilvános helyen szemmel láthatóan részeg állapotban lévő személynek szeszes italt szolgál ki, \n d) közterületen vagy nyilvános helyen fiatalkorút szándékosan lerészegít, \n szabálysértést követ el.',
+          },
+        },
+      },
+      '202': {
+        text: '',
+        children: {
+          '1': {
+            text: ' Aki a szabad vizek jegén való tartózkodás szabályait megszegi, szabálysértést követ el. \n \n 202/A. § Tiltott fürdés \n (1) Aki tiltott helyen fürdik, szabálysértést követ el. ',
+          },
+        },
+      },
+      '207': {
+        text: '',
+        children: {
+          '1': {
+            text: 'Aki személyazonosító igazolványra vonatkozó jogszabályban előírt kötelezettségét megszegi, az igazoltatásra feljogosított személy felszólítására személyi adatainak bemondását, a digitális államról és a digitális szolgáltatások nyújtásának egyes szabályairól szóló törvényben meghatározott digitális okmány vagy adattároló kód hozzáférhetővé tételét vagy a személyazonosság igazolására alkalmas hatósági igazolvány átadását megtagadja, vagy az említett adatokra vonatkozólag az intézkedés során valótlant állít, szabálysértést követ el.',
+          },
+        },
+      },
+      '208': {
+        text: '',
+        children: {
+          '1': {
+            text: 'Aki a külföldiek bejelentésére, jelentkezésére vagy az ország területén tartózkodására vonatkozó szabályokat megszegi – ideértve azt az esetet is, ha a külföldi a kiutasító határozatban, illetve a bírói kiutasítás végrehajtásáról rendelkező végzésben meghatározott határnapot követő napig Magyarország területét nem hagyta el, attól függetlenül, hogy kitoloncolásra sor került-e –, szabálysértést követ el.',
+          },
+        },
+      },
+      '217': {
+        text: '',
+        children: {
+          a: {
+            text: 'vasúti vagy légi járművet, gépi meghajtású vízi járművet, úszó munkagépet, illetve nem gépi meghajtású vízi járművet úgy vezet, hogy szervezetében szeszes ital fogyasztásából származó alkohol van, szabálysértést követ el',
+          },
+          b: {
+            text: 'vasúti vagy légi jármű, gépi meghajtású vízi jármű, úszó munkagép, illetve közúton vagy a közforgalom elől el nem zárt magánúton gépi meghajtású jármű vezetését olyan személynek engedi át, akinek a szervezetében szeszes ital fogyasztásából származó alkohol van,szabálysértést követ el.',
+          },
+        },
+      },
+
+      '218': {
+        text: 'Az elsőbbség és az előzés szabályainak megsértése. 218. § Annak a járműnek a vezetője, aki az elsőbbségre vagy az előzésre vonatkozó szabályokat megszegi, szabálysértést követ el.',
+      },
+
+      '219': {
+        text: '',
+        children: {
+          '1': {
+            text: 'Aki a közúti közlekedés szabályait megszegi és ezzel veszélyt okoz, szabálysértést követ el.',
+          },
+        },
+      },
+      '221': {
+        text: 'Érvénytelen hatósági engedéllyel vagy jelzéssel való közlekedés. 221. § Aki érvénytelen hatósági engedéllyel vagy jelzéssel, illetve olyan járművel vesz részt a közúti forgalomban, amelynek a műszaki érvényességi ideje lejárt, szabálysértést követ el. \n b) közterületen lévő gépjárműben engedély nélkül birtokol, szabálysértést követ el.',
+      },
+      '223': {
+        text: 'Aki a megkülönböztető fényjelzést vagy a hangjelzést adó készüléket \n a) gépjárműre jogosulatlanul felszerel (felhelyez),\n b) közterületen lévő gépjárműben engedély nélkül birtokol, szabálysértést követ el.',
+        children: {
+          a: {
+            text: 'gépjárműre jogosulatlanul felszerel (felhelyez),',
+          },
+          b: {
+            text: 'közterületen lévő gépjárműben engedély nélkül birtokol, szabálysértést követ el.',
+          },
+        },
+      },
+      '224': {
+        text: '',
+        children: {
+          '1': {
+            text: 'Aki a közúti közlekedés szabályairól szóló 1/1975. (II. 5.) KPM–BM együttes rendeletben (a továbbiakban: KRESZ) meghatározott közúti közlekedés szabályait megszegi, ha a 217–222. §-a szerinti szabálysértés nem valósul meg, szabálysértést követ el.',
+          },
+        },
+      },
+      '225': {
+        '1': {
+          text: 'Közúti közlekedési igazgatási szabályok megsértése. Aki a külön jogszabályban meghatározott közúti közlekedési igazgatási szabályokat megsérti, szabálysértést követ el.',
+        },
+      },
+      '230': {
+        text: 'Szmogriadó szabályainak mozgó légszennyező forrásokkal való megsértése.230. § Aki szmogriadó elrendelése esetén vagy annak megelőzése érdekében bevezetett, a mozgó légszennyező forrás használatára vonatkozó forgalomkorlátozásokat vagy intézkedéseket megsérti, szabálysértést követ el.',
+      },
+    },
+  },
+  '1999. évi LXXXIV. tv.': {
+    tv: '1999. évi LXXXIV. tv. a közúti közlekedési nyilvántartásról',
+    url: 'https://njt.hu/jogszabaly/1999-84-00-00.74',
+    paragrafusok: {
+      '33': {
+        children: {
+          '1': {
+            text: 'A nyilvántartásba bejegyzett adatok módosítására okot adó körülmény bekövetkeztétől számított 15 napon belül köteles a bejegyzésre jogosult hatóságnál: \n a) a járművezető, a járműtulajdonos, az üzembentartó a természetes személyazonosító adatának megváltozását bejelenteni. \n b) a jármű új tulajdonosa a jármű tulajdonjoga megváltozását bejelenteni \n c) a járműtulajdonos az üzembentartó személye megváltozását és a járműokmányban megjelölt műszaki adatok változását bejelenteni \n d) a kereskedő a használt vagy bontásra vásárolt jármű azonosító adatainak változását bejelenteni',
+            children: {
+              a: {
+                text: 'a járművezető, a járműtulajdonos, az üzembentartó a természetes személyazonosító adatának megváltozását bejelenteni',
+              },
+              b: {
+                text: 'a jármű új tulajdonosa a jármű tulajdonjoga megváltozását bejelenteni',
+              },
+              c: {
+                text: 'a járműtulajdonos az üzembentartó személye megváltozását és a műszaki adatok változását bejelenteni',
+              },
+              d: {
+                text: 'a kereskedő a használt vagy bontásra vásárolt jármű azonosító adatainak változását bejelenteni',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  '1996. évi LIII.tv': {
+    tv: '1996. évi LIII.tv',
+    url: 'https://net.jogtar.hu/jogszabaly?docid=99600053.tv',
+    paragrafusok: {
+      '38': {
+        children: {
+          '1': {
+            text: 'Védett természeti területen a természetvédelmi hatóság engedélye szükséges különösen: \n j) járművel történő közlekedéshez, az arra kijelölt mezőgazdasági és erdészeti használatú utak, az engedélyezett tevékenységek végzéséhez szükséges munkagépek, valamint a feladatukat ellátó – külön jogszabályokban erre feljogosított – személyek járművei kivételével.',
+          },
+        },
+      },
+    },
+  },
+};
+
+export const jogszabaly: Record<string, Jogszabaly> = {
+  '1': {
+    tv: '63/2012. (IV.2.) Korm. r.',
+    text: 'az egyes közlekedési szabálysértések miatt alkalmazandó szabálysértési pénzbírság, illetve helyszíni bírság kötelező mértékéről',
+    url: 'https://njt.hu/jogszabaly/2012-63-20-22',
+  },
+  '2': {
+    tv: '156/2009. (VII.29.) Korm r.',
+    text: 'a közúti árufuvarozáshoz, személyszállításhoz kapcsolódó rendelkezések megsértése esetén kiszabható bírságok összegéről',
+    url: 'https://njt.hu/jogszabaly/2012-63-20-22',
+  },
+  '3': {
+    tv: '410/2007. (XII. 29.) Korm. r.',
+    text: 'a közigazgatási bírsággal sújtandó közlekedési szabályszegések köréről,..  kiszabható bírságok összegéről \n Pl: gyorshajtás : 1.melléklet ',
+    url: 'https://njt.hu/jogszabaly/2007-410-20-22.25',
+  },
+  '4': {
+    tv: '236/2000. (XII.23.) Korm. r.',
+    text: 'a közúti közlekedési előéleti pontrendszerről ...',
+    url: 'https://njt.hu/jogszabaly/2000-236-20-22',
+  },
 };

@@ -1,18 +1,17 @@
-export interface Jogsertes {
-  id: number;
-  megnevezes: string;
+export interface Jogsert {
+  Id: number;
+  Tv: string;
+  paragrafus: number;
+  bekezdes?: number;
+  pont?: string;
 
-  kozigBirsagVan: boolean;
-  szabsertesiBirsagVan: boolean;
+  csoport: string;
+  Jogsertes: string;
 
-  utkozik: string;
-  minosul: string;
+  HB: string | null;
+  KOZIG: string | null;
+  KOZIG_objektiv_felelosseg: string | null;
 
-  eloeletiPont: number | null;
-
-  kozigBirsagOsszeg: number | null;
-  tavKozigBirsag: boolean;
-
-  helysziniBirsag: number | null;
-  kresz?: string[];
+  kke_pont: number | null;
+  minosites: string;
 }

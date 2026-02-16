@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "prebuild": "node scripts/generate-version.js",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"
@@ -23,6 +22,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.4",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

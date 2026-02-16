@@ -29,7 +29,7 @@ export default function UpdateNotifier() {
   };
 
   return (
-    <div className='fixed bottom-2 left-2 z-50 text-xs'>
+    <div className='mx-auto w-full fixed bottom-0  z-50 text-xs'>
       {updateAvailable ? (
         <div className='rounded bg-amber-200 p-2 text-black shadow'>
           Új verzió érhető el: <b>v{APP_VERSION}</b>

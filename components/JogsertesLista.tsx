@@ -1,181 +1,63 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-import { Jogsertes } from '@/types/jogsertes';
+import { useState, useMemo } from 'react';
+import { Jogsert } from '@/types/jogsertes';
 import { JogsertesCard } from './JogsertesCard';
-import { kreszKivonatok } from '@/data/kresz2';
 import KreszModal from './KreszModal';
+import {
+  OpenRef,
+  buildKreszPath,
+  formatTitle,
+  getJogszabalySzoveg,
+} from '@/utils/jogszabalyHelpers';
+import { useFavorites } from '@/hooks/useFavorites';
+import { useSearch } from '@/hooks/useSearch';
 
 interface Props {
-  data: Jogsertes[];
+  data: Jogsert[];
 }
-
-type KreszRef = {
-  paragrafus: string;
-  bekezdes: string;
-  pont?: string;
-  alpont?: string;
-};
 
 export default function JogsertesLista({ data }: Props) {
   const [query, setQuery] = useState('');
-  const [openRef, setOpenRef] = useState<KreszRef | null>(null);
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [openRef, setOpenRef] = useState<OpenRef | null>(null);
 
-  /* ------------------------------------------------------------------
-     1️⃣ KRESZ hivatkozás kinyerése szövegből
-     ------------------------------------------------------------------ */
-  const extractKreszRef = (text?: string): KreszRef | null => {
-    if (!text) return null;
+  const { favorites, toggleFavorite } = useFavorites();
+  const filtered = useSearch(data, query);
 
-    // KRESZ 40.§ (5)
-    const headerMatch = text.match(/KRESZ\s+(\d+)\.\s*§\s*\((\d+)\)/i);
-    if (!headerMatch) return null;
-
-    const paragrafus = headerMatch[1];
-    const bekezdes = headerMatch[2];
-
-    // maradék szöveg: d) i/1) ia)
-    const rest = text.slice(headerMatch[0].length);
-
-    const pointRegex = /([a-z]{1,3}|\d+)(?:\/(\d+))?\)/gi;
-    const points: string[] = [];
-
-    let m: RegExpExecArray | null;
-    while ((m = pointRegex.exec(rest)) !== null) {
-      points.push(m[2] ? `${m[1]}${m[2]}` : m[1]);
-    }
-
-    return {
-      paragrafus,
-      bekezdes,
-      pont: points[0],
-      alpont: points[1],
-    };
-  };
-
-  /* ------------------------------------------------------------------
-     2️⃣ KRESZ szöveg összeállítása modalhoz
-     ------------------------------------------------------------------ */
-  const getKreszSzoveg = (ref: KreszRef | null): string => {
-    if (!ref) return '';
-
-    const paragrafus = kreszKivonatok[ref.paragrafus];
-    if (!paragrafus) return '';
-
-    const bekezdes = paragrafus.bekezdesek?.[ref.bekezdes];
-    if (!bekezdes) return '';
-
-    const lines: string[] = [];
-
-    // 📌 Paragrafus cím
-    if (paragrafus.cim) {
-      lines.push(paragrafus.cim);
-    }
-
-    // 📌 Bekezdés
-    if (bekezdes.szoveg) {
-      lines.push(`(${ref.bekezdes}) ${bekezdes.szoveg}`);
-    }
-
-    // 📌 Pont
-    if (ref.pont) {
-      const pont = bekezdes.alpontok?.[ref.pont];
-      if (pont?.szoveg) {
-        lines.push(`${ref.pont}) ${pont.szoveg}`);
-
-        // 📌 Alpont (ha van)
-        if (ref.alpont) {
-          const alpont = pont.alpontok?.[ref.alpont];
-          if (alpont?.szoveg) {
-            lines.push(`${ref.alpont}) ${alpont.szoveg}`);
-          }
-        }
-      }
-    }
-
-    return lines.join('\n\n');
-  };
-
-  /* ------------------------------------------------------------------
-     3️⃣ Modal megnyitása jogsértés szövegéből
-     ------------------------------------------------------------------ */
-  const openModalFromText = (text?: string) => {
-    const ref = extractKreszRef(text);
-    if (ref && kreszKivonatok[ref.paragrafus]) {
-      setOpenRef(ref);
-    }
-  };
-
-  /* ------------------------------------------------------------------
-     4️⃣ Kedvencek kezelése
-     ------------------------------------------------------------------ */
-  useEffect(() => {
-    const saved = localStorage.getItem('favorites');
-    if (saved) setFavorites(JSON.parse(saved));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
-
-  const toggleFavorite = (id: string) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [id, ...prev]
+  const sorted = useMemo(() => {
+    return [...filtered].sort(
+      (a, b) =>
+        Number(favorites.includes(b.Id)) - Number(favorites.includes(a.Id))
     );
+  }, [filtered, favorites]);
+
+  const openJogszabaly = (item: Jogsert) => {
+    if (item.Tv === 'KRESZ') {
+      const path = buildKreszPath(item);
+      if (!path) return;
+      setOpenRef({ tv: 'KRESZ', path });
+      return;
+    }
+    setOpenRef({ tv: item.Tv, path: String(item.paragrafus) });
   };
 
-  /* ------------------------------------------------------------------
-     5️⃣ Lista rendezés + szűrés
-     ------------------------------------------------------------------ */
-  const sortedItems = useMemo(() => {
-    return [...data].sort((a, b) => {
-      const aFav = favorites.includes(a.megnevezes);
-      const bFav = favorites.includes(b.megnevezes);
-      return Number(bFav) - Number(aFav);
-    });
-  }, [data, favorites]);
-
-  const filtered = sortedItems.filter((item) => {
-    const q = query.toLowerCase().trim();
-    if (!q) return true;
-
-    // 1️⃣ jogsértés megnevezés
-    const inMegnevezes = item.megnevezes.toLowerCase().includes(q);
-
-    // 2️⃣ KRESZ hivatkozás (pl. "KRESZ 40.§ (5) d)")
-    const inUtkozik = item.utkozik?.toLowerCase().includes(q);
-
-    // 3️⃣ paragrafus címe (pl. "Megállás")
-    const kreszRef = extractKreszRef(item.utkozik);
-    const paragrafusCim =
-      kreszRef &&
-      kreszKivonatok[kreszRef.paragrafus]?.cim?.toLowerCase().includes(q);
-
-    return inMegnevezes || inUtkozik || paragrafusCim;
-  });
-
-  /* ------------------------------------------------------------------
-     6️⃣ Render
-     ------------------------------------------------------------------ */
   return (
-    <>
-      <div className='space-y-4 text-amber-950'>
-        <input
-          type='text'
-          placeholder='Keresés jogsértésre vagy paragrafusra…'
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className='w-full rounded-lg border p-3'
-        />
+    <div className='flex flex-col mb-4 w-full max-w-2xl'>
+      <input
+        className='w-full rounded-lg border p-3 mb-4 mt-2 text-amber-950 top-15 sticky z-10 bg-white'
+        placeholder='Keresés...'
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
 
-        {filtered.map((item) => (
+      <div className=' w-full min-w-0 space-y-4 '>
+        {sorted.map((item) => (
           <JogsertesCard
-            key={item.megnevezes}
+            key={item.Id}
             item={item}
-            isFavorite={favorites.includes(item.megnevezes)}
-            onToggleFavorite={() => toggleFavorite(item.megnevezes)}
-            onOpenKresz={() => openModalFromText(item.utkozik)}
+            isFavorite={favorites.includes(item.Id)}
+            onToggleFavorite={() => toggleFavorite(item.Id)}
+            onOpenKresz={() => openJogszabaly(item)}
           />
         ))}
       </div>
@@ -184,11 +66,11 @@ export default function JogsertesLista({ data }: Props) {
         <KreszModal
           open
           onClose={() => setOpenRef(null)}
-          title={kreszKivonatok[openRef.paragrafus].cim}
-          content={getKreszSzoveg(openRef)}
-          image={kreszKivonatok[openRef.paragrafus].image}
+          title={formatTitle(openRef)}
+          content={getJogszabalySzoveg(openRef)}
+          tv={openRef.tv}
         />
       )}
-    </>
+    </div>
   );
 }
